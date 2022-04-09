@@ -22,6 +22,7 @@ public class UserController {
 	
 	@GetMapping("/userDetails")
 	public ResponseEntity<List<UserEntity>> getAllUsers() {
+		System.out.println("Fetching user details");
 		try {
 			List<UserEntity> users = new ArrayList<>();
 			users = userRepository.findAll();
