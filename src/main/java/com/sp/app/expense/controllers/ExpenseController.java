@@ -14,6 +14,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import com.sp.app.expense.services.ExpenseExcelExporter;
 import com.sp.app.expense.services.ExpenseService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/expense")
 public class ExpenseController {
 
@@ -69,6 +71,7 @@ public class ExpenseController {
 	//C:\Users\This PC\AppData\Local\Postman\app-7.36.7
 	@GetMapping("/export")
 	public ResponseEntity<InputStreamResource> exportReport() {
+		System.out.println("Exporting Expenses.");
 		try {
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 			LocalDateTime now = LocalDateTime.now();
