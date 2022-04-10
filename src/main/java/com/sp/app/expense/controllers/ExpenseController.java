@@ -64,7 +64,7 @@ public class ExpenseController {
 				return new ResponseEntity<>("Expense added successfully !", HttpStatus.CREATED);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<>("Unable to add expense. Please try again later...",
+			return new ResponseEntity<>("Unable to add expense. Please try again later",
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
