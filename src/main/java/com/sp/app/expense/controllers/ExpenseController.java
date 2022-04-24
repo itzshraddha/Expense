@@ -1,7 +1,6 @@
 package com.sp.app.expense.controllers;
 
 import java.io.ByteArrayInputStream;
-import java.net.http.HttpHeaders;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -54,17 +53,17 @@ public class ExpenseController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<String> saveUserDetails(@RequestBody ExpenseEntity expense) {
+	public ResponseEntity<ExpenseEntity> saveUserDetails(@RequestBody ExpenseEntity expense) {
 		try {
 			if (expense.getAmount() == null || expense.getAmount().intValue() == 0) {
-				return new ResponseEntity<>("Amount can not be null or 0. Please enter valid amount.",
+				return new ResponseEntity<ExpenseEntity>(expense,
 						HttpStatus.BAD_REQUEST);
 			} else {
 				expenseService.addExpense(expense);
-				return new ResponseEntity<>("Expense added successfully !", HttpStatus.CREATED);
+				return new ResponseEntity<>(expense, HttpStatus.CREATED);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<>("Unable to add expense. Please try again later...",
+			return new ResponseEntity<>(expense,
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
