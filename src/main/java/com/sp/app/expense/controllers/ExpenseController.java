@@ -63,8 +63,7 @@ public class ExpenseController {
 				return new ResponseEntity<>(expense, HttpStatus.CREATED);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<>(expense,
-					HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(expense, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	//C:\Users\This PC\AppData\Local\Postman\app-7.36.7
